@@ -1,3 +1,13 @@
+/**
+ * _drivers.ts - 内置驱动注册表
+ * 
+ * 这个文件是自动生成的，它定义了unstorage支持的所有内置驱动的类型和引用。
+ * 它使用户可以通过字符串名称来引用驱动，而不需要直接导入实际的驱动模块。
+ * 这种方式允许我们实现按需加载，减少了最终打包的大小。
+ * 
+ * 注意：这个文件是由scripts/gen-drivers脚本自动生成的，不应该手动编辑。
+ */
+
 // Auto-generated using scripts/gen-drivers.
 // Do not manually edit!
 
@@ -32,8 +42,25 @@ import type { UpstashOptions as UpstashOptions } from "unstorage/drivers/upstash
 import type { VercelBlobOptions as VercelBlobOptions } from "unstorage/drivers/vercel-blob";
 import type { VercelKVOptions as VercelKVOptions } from "unstorage/drivers/vercel-kv";
 
+/**
+ * BuiltinDriverName - 内置驱动的名称类型
+ * 
+ * 这个类型定义了所有可用的内置驱动的名称。
+ * 每个驱动都有两种命名形式：
+ * 1. 短横线形式（如 'azure-app-configuration'）
+ * 2. 驼峰式（如 'azureAppConfiguration'）
+ * 
+ * 用户可以使用任一形式来引用驱动，这提供了更大的灵活性。
+ */
 export type BuiltinDriverName = "azure-app-configuration" | "azureAppConfiguration" | "azure-cosmos" | "azureCosmos" | "azure-key-vault" | "azureKeyVault" | "azure-storage-blob" | "azureStorageBlob" | "azure-storage-table" | "azureStorageTable" | "capacitor-preferences" | "capacitorPreferences" | "cloudflare-kv-binding" | "cloudflareKVBinding" | "cloudflare-kv-http" | "cloudflareKVHttp" | "cloudflare-r2-binding" | "cloudflareR2Binding" | "db0" | "deno-kv-node" | "denoKVNode" | "deno-kv" | "denoKV" | "fs-lite" | "fsLite" | "fs" | "github" | "http" | "indexedb" | "localstorage" | "lru-cache" | "lruCache" | "memory" | "mongodb" | "netlify-blobs" | "netlifyBlobs" | "null" | "overlay" | "planetscale" | "redis" | "s3" | "session-storage" | "sessionStorage" | "uploadthing" | "upstash" | "vercel-blob" | "vercelBlob" | "vercel-kv" | "vercelKV";
 
+/**
+ * BuiltinDriverOptions - 内置驱动的配置选项类型
+ * 
+ * 这个类型定义了每个内置驱动的配置选项类型。
+ * 它是一个映射类型，将驱动名称映射到其对应的配置选项类型。
+ * 这使得TypeScript可以在创建驱动时提供类型检查和自动补全。
+ */
 export type BuiltinDriverOptions = {
   "azure-app-configuration": AzureAppConfigurationOptions;
   "azureAppConfiguration": AzureAppConfigurationOptions;
@@ -84,6 +111,15 @@ export type BuiltinDriverOptions = {
   "vercelKV": VercelKVOptions;
 };
 
+/**
+ * builtinDrivers - 内置驱动的模块路径映射
+ * 
+ * 这个常量对象将驱动名称映射到其实际的模块路径。
+ * 当用户通过字符串指定驱动时，系统会使用这个映射来动态导入相应的驱动模块。
+ * 这种方式实现了按需加载，避免了将所有驱动都打包到最终代码中。
+ * 
+ * 每个驱动都有两种命名形式（短横线和驼峰式），但它们指向相同的模块路径。
+ */
 export const builtinDrivers = {
   "azure-app-configuration": "unstorage/drivers/azure-app-configuration",
   "azureAppConfiguration": "unstorage/drivers/azure-app-configuration",
